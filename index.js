@@ -9,6 +9,10 @@ app.use(express.json())
 app.get('/' , (req , res)=>{
     res.send('Teximco BD')
 })
+app.get('/test' , (req , res)=>{
+    res.send('test BD')
+})
+
 app.listen(port , ()=>{
     console.log('teximco db')
 })
