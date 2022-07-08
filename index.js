@@ -12,16 +12,17 @@ app.use(cors());
 app.use(express.json())
 app.use(fileUpload())
 
-const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASS}@cluster0.is333.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.USER_PASS}@cluster0.6q1qtwn.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
 async function run() {
     try {
       await client.connect();
-      const mediaCollection = client.db("eRevolute").collection('mediaCollection');
-      const productCollection = client.db("eRevolute").collection('productCollection');
-      const contactCollection = client.db("eRevolute").collection('contactCollection');
+      
+      const mediaCollection = client.db("teximco").collection('mediaCollection');
+      const productCollection = client.db("teximco").collection('productCollection');
+      const contactCollection = client.db("teximco").collection('contactCollection');
 
      
       
@@ -49,7 +50,6 @@ async function run() {
          }
          const result = await productCollection.insertOne(query);
          res.send(result)
-
       })
 
       app.get('/products' , async(req, res)=>{
